@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Интерактивная фотогалерея</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #image {
+      width: 500px;
+      height: 300px;
+      border: 2px solid #000;
+      margin: 20px auto;
+      line-height: 300px;
+      background-size: cover;
+      background-position: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    img {
+      width: 150px;
+      height: 100px;
+      margin: 10px;
+      cursor: pointer;
+      object-fit: cover;
+    }
+  </style>
+
+  <script>
+    function upDate(previewPic) {
+      console.log("Навели на изображение");
+      console.log("ALT:", previewPic.alt);
+      console.log("SRC:", previewPic.src);
+
+      document.getElementById("image").innerHTML = previewPic.alt;
+      document.getElementById("image").style.backgroundImage =
+        "url('" + previewPic.src + "')";
+    }
+
+    function unDo() {
+      document.getElementById("image").innerHTML =
+        "Наведите курсор на изображение ниже, чтобы отобразить его здесь";
+
+      document.getElementById("image").style.backgroundImage = "url('')";
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Интерактивная фотогалерея</h1>
+
+  <div id="image">
+    Наведите курсор на изображение ниже, чтобы отобразить его здесь
+  </div>
+
+  <!-- Реальные фото -->
+  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60"
+       alt="Горный пейзаж"
+       onmouseover="upDate(this)"
+       onmouseout="unDo()">
+
+  <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=60"
+       alt="Озеро в горах"
+       onmouseover="upDate(this)"
+       onmouseout="unDo()">
+
+  <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=800&q=60"
+       alt="Город ночью"
+       onmouseover="upDate(this)"
+       onmouseout="unDo()">
+
+</body>
+</html>
